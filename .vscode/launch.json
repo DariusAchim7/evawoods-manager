@@ -1,0 +1,44 @@
+{
+  // VS Code: Debug → Open Configurations
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API (dotnet run)",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/FurnitureManager/FurnitureManager.csproj",
+      "preLaunchTask": "build",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "stopAtEntry": false
+    },
+    {
+      "name": "Web (dotnet run)",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/FurnitureManager/FurnitureManager.csproj",
+      "preLaunchTask": "build",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "stopAtEntry": false
+    }    
+  ],
+
+  "compounds": [
+    {
+      "name": "API + Web",
+      "configurations": [
+        "API (dotnet run)",
+        "Web (dotnet run)"
+      ],
+      "stopAll": true,
+      "preLaunchTask": "build"
+    }
+  ]
+}

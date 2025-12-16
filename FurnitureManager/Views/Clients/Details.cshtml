@@ -1,0 +1,47 @@
+@model FurnitureManager.ViewModels.Clients.ClientDetailsVm
+
+@{
+    ViewData["Title"] = $"Client: {Model.Client.Name}";
+}
+
+<p>
+    <a asp-controller="Clients" asp-action="Index">Inapoi la clienti</a>
+</p>
+
+<h1>@Model.Client.Name</h1>
+
+<hr />
+
+<h2>Adauga proiect</h2>
+<form method="post" asp-controller="Clients" asp-action="AddProject" asp-route-id="@Model.Client.Id">
+    @Html.AntiForgeryToken()
+    <label for="newProjectName">Nume proiect</label><br />
+    <input id="newProjectName" name="NewProjectName" value="@Model.NewProjectName" style="width: 320px;" />
+    <button type="submit">Adauga</button>
+</form>
+
+<hr />
+
+<h2>Proiecte</h2>
+
+@if (Model.Projects.Count == 0)
+{
+    <p>Acest client nu are proiecte.</p>
+}
+else
+{
+    <ul>
+        @foreach (var p in Model.Projects)
+        {
+            <li>
+                <a asp-controller="Projects"
+                   asp-action="Details"
+                   asp-route-clientId="@Model.Client.Id"
+                   asp-route-projectId="@p.Id">
+                    @p.Name
+                </a>
+                <span style="opacity: 0.7;">(incasat: @p.Revenue)</span>
+            </li>
+        }
+    </ul>
+}

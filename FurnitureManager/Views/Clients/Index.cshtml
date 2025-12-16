@@ -1,0 +1,53 @@
+@model FurnitureManager.ViewModels.Clients.ClientsIndexVm
+
+@{
+    ViewData["Title"] = "Clienti";
+}
+
+<h1>Clienti</h1>
+
+<form method="get" asp-action="Index" asp-controller="Clients">
+    <label for="search">Cauta dupa nume</label><br />
+    <input id="search" name="search" value="@Model.Search" style="width: 320px;" />
+    <button type="submit">Cauta</button>
+    <a asp-action="Index" asp-controller="Clients">Reset</a>
+</form>
+
+<hr />
+
+<h2>Adauga client</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <div style="color: #b00020; margin-bottom: 10px;">
+        @Model.ErrorMessage
+    </div>
+}
+
+<form method="post" asp-action="Create" asp-controller="Clients">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Search" value="@Model.Search" />
+    <label for="newClientName">Nume</label><br />
+    <input id="newClientName" name="NewClientName" value="@Model.NewClientName" style="width: 320px;" />
+    <button type="submit">Salveaza</button>
+</form>
+
+<hr />
+
+<h2>Lista clienti</h2>
+
+@if (Model.Clients.Count == 0)
+{
+    <p>Nu exista clienti.</p>
+}
+else
+{
+    <ul>
+        @foreach (var c in Model.Clients)
+        {
+            <li>
+                <a asp-controller="Clients" asp-action="Details" asp-route-id="@c.Id">@c.Name</a>
+            </li>
+        }
+    </ul>
+}

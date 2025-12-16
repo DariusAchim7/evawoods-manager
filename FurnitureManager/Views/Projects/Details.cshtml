@@ -1,0 +1,26 @@
+@model FurnitureManager.ViewModels.Projects.ProjectDetailsVm
+
+@{
+    ViewData["Title"] = $"Proiect: {Model.Project.Name}";
+}
+
+<p>
+    <a asp-controller="Clients" asp-action="Details" asp-route-id="@Model.Client.Id">Inapoi la client</a>
+</p>
+
+<h1>@Model.Project.Name</h1>
+<p style="opacity: 0.8;">Client: @Model.Client.Name</p>
+
+<hr />
+
+<h2>Sumar</h2>
+<ul>
+    <li>Incasat: @Model.Project.Revenue</li>
+    <li>Cheltuieli totale: @Model.TotalExpenses</li>
+    <li>Profit: @Model.Profit</li>
+</ul>
+
+<hr />
+
+<h2>Cheltuieli</h2>
+<p>Inca nu am implementat cheltuielile. Urmatorul pas este sa definim categoriile, produsele si cheltuielile pe proiect.</p>
