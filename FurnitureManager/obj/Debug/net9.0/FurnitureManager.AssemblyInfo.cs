@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FurnitureManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32d5a4c1065a285408a0e3a00d15543121e8fe6f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e947a73de776d74f29b39378aca5f38f1a1ff7ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("FurnitureManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FurnitureManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
